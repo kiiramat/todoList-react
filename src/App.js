@@ -29,10 +29,14 @@ import React from "react";
 import './App.css';
 
 import Checkbox from "./components/Checkbox";
+import Greetings from "./components/Greetings";
 
 function App() {
   return(
     <div className="todo-list">
+      <div className="greetings-container">
+        <Greetings />
+      </div>
       <div className="tasks-list-container">
         <div className="tasks-list">
           <Checkbox />
