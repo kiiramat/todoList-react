@@ -1,12 +1,31 @@
 import React from "react";
 
-function Checkbox() {
+class Checkbox extends React.Component {
+  constructor() {
+    super()
+    this.onCheckboxChange = this.onCheckboxChange.bind(this)
+  }
+
+  onCheckboxChange(event) {
+    const { name, checked } = event.target
+    this.props.handleChange(name, checked)
+  }
+
+  render() {
     return (
-        <div className="individual-task">
-            <input className="task-checkbox" type="checkbox" />
-            <label className="task-text">Placeholder here</label>
-        </div>
+      <div>
+        <label>
+          <input
+            type="checkbox"
+            name={this.props.name}
+            checked={this.props.checked}
+            onChange={this.onCheckboxChange}
+          />
+          {this.props.text}
+        </label>
+      </div>
     )
+  }
 }
 
-export default Checkbox;
+export default Checkbox
