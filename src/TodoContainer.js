@@ -23,7 +23,7 @@ class TodoContainer extends React.Component {
     return (
       <div>
         <TodoTitle />
-        <div className="container-input-add_button">
+        <div className="input-add_button-container">
           <InputBox 
             name="newTask"
             value={this.state.newTask}
