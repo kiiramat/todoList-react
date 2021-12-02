@@ -1,8 +1,9 @@
 import React from "react";
+import "./AddButton.css"
 
 function AddButton() {
     return (
-        <button>
+        <button className="add-button">
             ADD
         </button>
     )

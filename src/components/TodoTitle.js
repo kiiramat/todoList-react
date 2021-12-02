@@ -3,9 +3,11 @@ import "./TodoTitle.css"
 
 function TodoTitle() {
     return (
-        <h1 className="title">
-            To-Do List
-        </h1>
+        <div className="title-container" >
+            <h1 className="title">
+                To-Do List
+            </h1>
+        </div>
     )
 }
 

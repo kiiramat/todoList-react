@@ -1,4 +1,5 @@
 import React from "react"; 
+import "./TodoContainer.css"
 
 import TodoTitle from "./components/TodoTitle";
 import InputBox from "./components/InputBox";
@@ -22,13 +23,15 @@ class TodoContainer extends React.Component {
     return (
       <div>
         <TodoTitle />
-        <InputBox 
-          name="newTask"
-          value={this.state.newTask}
-          placeholder="New Task"
-          handleChange={this.onChange}
-        />
-        <AddButton />
+        <div className="container-input-add_button">
+          <InputBox 
+            name="newTask"
+            value={this.state.newTask}
+            placeholder="New Task"
+            handleChange={this.onChange}
+          />
+          <AddButton />
+        </div>
       </div>
     );
   }
