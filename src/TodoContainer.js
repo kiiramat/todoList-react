@@ -1,9 +1,8 @@
-import React from "react";
+import React from "react"; 
 
 import TodoTitle from "./components/TodoTitle";
 import InputBox from "./components/InputBox";
 import AddButton from "./components/AddButton";
-import Checkbox from "./components/Checkbox";
 
 class TodoContainer extends React.Component {
   constructor() {
