@@ -1,5 +1,6 @@
 import React from "react";
 
+import TodoTitle from "./components/TodoTitle";
 import Checkbox from "./components/Checkbox"
 
 class TodoContainer extends React.Component {
@@ -8,10 +9,9 @@ class TodoContainer extends React.Component {
     this.state = {
       isVegetarian: true
     }
-    this.onChangedCheckbox = this.onChangedCheckbox.bind(this)
   }
 
-  onChangedCheckbox(name, checked) {
+  onChangedCheckbox = (name, checked) => {
     this.setState({
       [name] : checked
     })
@@ -20,6 +20,7 @@ class TodoContainer extends React.Component {
   render() {
     return (
       <div>
+        <TodoTitle />
         <Checkbox 
           text = "Vegetarian"
           name = "isVegetarian"
