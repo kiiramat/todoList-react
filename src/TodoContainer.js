@@ -1,35 +1,36 @@
 import React from "react";
 
 import TodoTitle from "./components/TodoTitle";
-import Checkbox from "./components/Checkbox"
+import InputBox from "./components/InputBox";
+import Checkbox from "./components/Checkbox";
 
 class TodoContainer extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      isVegetarian: true
-    }
+      newTask: ""
+    };
   }
 
-  onChangedCheckbox = (name, checked) => {
+  onChange = (name, value) => {
     this.setState({
-      [name] : checked
-    })
-  }
+      [name]: value
+    });
+  };
 
   render() {
     return (
       <div>
         <TodoTitle />
-        <Checkbox 
-          text = "Vegetarian"
-          name = "isVegetarian"
-          value = {this.state.isVegetarian}
-          ckecked = {this.state.isVegetarian}
-          handleChange = {this.onChangedCheckbox}
+        <InputBox 
+          name="newTask"
+          value={this.state.newTask}
+          placeholder="New Task"
+          handleChange={this.onChange}
         />
-      </div>        
-    )
+
+      </div>
+    );
   }
 }
 
