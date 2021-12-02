@@ -1,0 +1,20 @@
+.input-field {
+    height: 40px;
+    width: 440px;
+    outline: 0;
+    border: none;
+    padding-left: 15px;
+    border: 1px solid transparent;
+}
+
+.input-field:hover {
+    border: 1px solid #3f9eda;
+}
+
+.input-field::placeholder {
+    font-size: 20px;
+}
+
+input[type="text"] {
+    font-size: 20px;
+}

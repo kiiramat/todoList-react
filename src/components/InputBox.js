@@ -1,4 +1,5 @@
 import React from "react";
+import "./InputBox.css"
 
 const InputBox = function(props) {
   const onInputChange = (event) => {
@@ -9,6 +10,7 @@ const InputBox = function(props) {
   return (
     <div>
       <input
+        className = "input-field"
         type="text"
         name={props.name}
         placeholder={props.placeholder}
