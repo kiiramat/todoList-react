@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./InputBox.css"
 
 const InputBox = function(props) {
+  const [task, setTask] = useState("");
+
   const onInputChange = (event) => {
-    const { name, value } = event.target;
-    props.handleChange(name, value);
+    setTask(event.target.value);
   };
+
+  const onKeyDownEvent = (event) => {
+    if (event.key === "Enter" && task !== "") {
+      props.onNewTask(task)
+      setTask("")
+    }
+  }
 
   return (
     <div>
@@ -13,7 +21,9 @@ const InputBox = function(props) {
         className = "input-field"
         type="text"
         name={props.name}
+        value={task}
         placeholder={props.placeholder}
+        onKeyDown={onKeyDownEvent}
         onChange={onInputChange}
         autoComplete="off"
       />

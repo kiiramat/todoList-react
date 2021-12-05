@@ -4,33 +4,42 @@ import "./TodoContainer.css"
 import TodoTitle from "./components/TodoTitle";
 import InputBox from "./components/InputBox";
 import AddButton from "./components/AddButton";
+import TasksList from "./components/TasksList";
 
 class TodoContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      newTask: ""
+      tasks: []
     };
   }
 
-  onChange = (name, value) => {
-    this.setState({
-      [name]: value
-    });
-  };
+  // onChange = (name, value) => {
+  //   this.setState(   {
+  //     [name]: value
+  //   });
+  // };
+
+  onNewTask = (newTask) => {
+    this.setState({tasks: [...this.state.tasks, newTask]})
+  }
 
   render() {
+    console.log(this.state.tasks)
     return (
       <div>
         <TodoTitle />
         <div className="input-add_button-container">
           <InputBox 
             name="newTask"
-            value={this.state.newTask}
             placeholder="New Task"
-            handleChange={this.onChange}
+            onNewTask={this.onNewTask}
+            // handleChange={this.onChange}
           />
-          <AddButton />
+          <AddButton/>
+        </div>
+        <div className="task_board-container">
+          <TasksList />
         </div>
       </div>
     );
