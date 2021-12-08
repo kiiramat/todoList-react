@@ -16,8 +16,10 @@ const InputBox = function (props) {
   };
 
   const onClickEvent = () => {
-    props.onNewTask(task);
-    setTask("");
+    if (task !== "") {
+      props.onNewTask(task);
+      setTask("");
+    }
   };
 
   return (
@@ -36,7 +38,7 @@ const InputBox = function (props) {
         className="add-button"
         onClick={onClickEvent}
       >
-        ADD
+      ADD
       </button>
     </div>
   );
