@@ -5,6 +5,11 @@ input {
     border: none;
 }
 
+.input-add_button-container {
+    display: flex;
+    justify-content: center;
+  }
+
 .input-field {
     height: 40px;
     width: 440px;
@@ -24,4 +29,21 @@ input {
 
 input[type="text"] {
     font-size: 20px;
+}
+
+.add-button { 
+    font-size: 20px;
+    background-color: white;
+    color: #3f9eda;
+    font-weight: 500;
+    height: 42px;
+    width: 60px;
+    outline: 0;
+    border: none;
+    transition-duration: 0.4s;
+}
+
+.add-button:hover {
+    background-color: #3f9eda;
+    color: white;
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "./InputBox.css"
+import "./InputBoxWithAddButton.css";
 
-const InputBox = function(props) {
+const InputBox = function (props) {
   const [task, setTask] = useState("");
 
   const onInputChange = (event) => {
@@ -10,15 +10,20 @@ const InputBox = function(props) {
 
   const onKeyDownEvent = (event) => {
     if (event.key === "Enter" && task !== "") {
-      props.onNewTask(task)
-      setTask("")
+      props.onNewTask(task);
+      setTask("");
     }
-  }
+  };
+
+  const onClickEvent = () => {
+    props.onNewTask(task);
+    setTask("");
+  };
 
   return (
-    <div>
+    <div className="input-add_button-container">
       <input
-        className = "input-field"
+        className="input-field"
         type="text"
         name={props.name}
         value={task}
@@ -27,9 +32,15 @@ const InputBox = function(props) {
         onChange={onInputChange}
         autoComplete="off"
       />
+      <button
+        className="add-button"
+        onClick={onClickEvent}
+      >
+        ADD
+      </button>
     </div>
   );
-}
+};
 
 
 export default InputBox;

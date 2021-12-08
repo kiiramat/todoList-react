@@ -2,8 +2,7 @@ import React from "react";
 import "./TodoContainer.css"
 
 import TodoTitle from "./components/TodoTitle";
-import InputBox from "./components/InputBox";
-import AddButton from "./components/AddButton";
+import InputBoxWithAddButton from "./components/InputBoxWithAddButton";
 import TasksList from "./components/TasksList";
 
 class TodoContainer extends React.Component {
@@ -23,14 +22,11 @@ class TodoContainer extends React.Component {
     return (
       <div>
         <TodoTitle />
-        <div className="input-add_button-container">
-          <InputBox 
-            name="newTask"
-            placeholder="New Task"
-            onNewTask={this.onNewTask}
-          />
-          <AddButton/>
-        </div>
+        <InputBoxWithAddButton 
+          name="newTask"
+          placeholder="New Task"
+          onNewTask={this.onNewTask}
+        />
         <div className="task_board-container">
           <TasksList />
         </div>
