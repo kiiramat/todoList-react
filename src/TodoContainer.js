@@ -14,12 +14,6 @@ class TodoContainer extends React.Component {
     };
   }
 
-  // onChange = (name, value) => {
-  //   this.setState(   {
-  //     [name]: value
-  //   });
-  // };
-
   onNewTask = (newTask) => {
     this.setState({tasks: [...this.state.tasks, newTask]})
   }
@@ -34,7 +28,6 @@ class TodoContainer extends React.Component {
             name="newTask"
             placeholder="New Task"
             onNewTask={this.onNewTask}
-            // handleChange={this.onChange}
           />
           <AddButton/>
         </div>
