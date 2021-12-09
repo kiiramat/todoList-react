@@ -1,15 +1,23 @@
 import React from "react";
 
-function TasksList() {
-    // const [items, setItems] = useState()
+function TasksList(props) {
+  console.log(props);
+
+  const tasksToDo = props.tasks.map((task, index) => {
     return (
-        <div>
-            <h1>hi</h1>
-            {/* <ul>
-                {items.map((item, i) => <ListItem key={i}>{item}</ListItem>)}
-            </ul> */}
-        </div>
-    )
+      <div>
+        <li key={index} >
+          {task}
+        </li>
+      </div>
+
+    );
+  });
+  return (
+    <div>
+      {tasksToDo}
+    </div>
+  );
 }
 
-export default TasksList
+export default TasksList;

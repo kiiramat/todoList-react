@@ -27,9 +27,7 @@ class TodoContainer extends React.Component {
           placeholder="New Task"
           onNewTask={this.onNewTask}
         />
-        <div className="task_board-container">
-          <TasksList />
-        </div>
+        <TasksList tasks = {this.state.tasks} />
       </div>
     );
   }
