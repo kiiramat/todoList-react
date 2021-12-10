@@ -8,6 +8,7 @@ input {
 .input-add_button-container {
     display: flex;
     justify-content: center;
+    margin-bottom: 20px;
   }
 
 .input-field {
