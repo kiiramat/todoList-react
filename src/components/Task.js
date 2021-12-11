@@ -8,11 +8,14 @@ function Task(props) {
     props.handleClick(props.task);
   };
 
-  const onCheckboxChange = (event) => {
-    const { checked } = event.target;;
-    setCheckedState(checked);
+  const lineThroughCheckedText = () => {
+    return checkedState ? "line-through" :  ""
   };
 
+  const onCheckboxChange = (event) => {
+    const { checked } = event.target;
+    setCheckedState(checked);
+  };
 
   return (
     <li className="list-item">
@@ -24,7 +27,7 @@ function Task(props) {
         checked={checkedState}
         onChange={onCheckboxChange}
       />
-      <span className="task-text" >{props.task}</span>
+      <span className={`task-text ${lineThroughCheckedText()}`} >{props.task}</span>
     </li>
   );
 }

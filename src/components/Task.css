@@ -41,6 +41,12 @@
   background-color: #53BDFF;
 }
 
+.line-through {
+  text-decoration: line-through;
+  text-decoration-thickness: 3px;
+  text-decoration-color: #53BDFF;
+}
+
 .task-text {
   font-size: 20px;
   word-wrap: break-word;
