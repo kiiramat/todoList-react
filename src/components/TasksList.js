@@ -1,14 +1,11 @@
 import React from "react";
 import "./TasksList.css";
+import Task from "./Task";
 
 function TasksList(props) {
-  console.log(props);
-
   const tasksToDo = props.tasks.map((task, index) => {
-    return (
-      <li key={index} className="list-item">
-        {task}
-      </li>
+      return (
+        <Task key={index} task={task} handleClick={props.handleClick} />
     );
   });
 

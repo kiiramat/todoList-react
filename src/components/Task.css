@@ -1,0 +1,28 @@
+.list-item {
+  display: flex;
+  margin-top: 25px;
+  margin-right: 40px;
+  margin-bottom: 25px;
+  margin-left: 22px;
+  border-bottom: 1px solid #53bdff;
+}
+
+.delete-task-button {
+  width: 30px;
+  height: 30px;
+  padding-bottom: 4px;
+  margin-right: 10px;
+  border-radius: 4px;
+  background-color: #ff6161;
+  color: white;
+  font-size: 20px;
+  outline: 0;
+  border: none;
+  min-width: 30px;
+}
+
+.task-text {
+  font-size: 20px;
+  word-wrap: break-word;
+  max-width: 312px;
+}
