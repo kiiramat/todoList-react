@@ -4,6 +4,7 @@ import "./TodoContainer.css";
 import TodoTitle from "./components/TodoTitle";
 import InputBoxWithAddButton from "./components/InputBoxWithAddButton";
 import TasksList from "./components/TasksList";
+import Task from "./domain/Task";
 
 class TodoContainer extends React.Component {
   constructor() {
@@ -14,19 +15,20 @@ class TodoContainer extends React.Component {
   }
 
   onNewTask = (newTask) => {
-    this.setState({ tasks: [...this.state.tasks, newTask] });
+    this.setState({ tasks: [...this.state.tasks, new Task(newTask)] });
   };
 
-  handleClick = (task) => {
+  onDelete = (taskText) => {
     this.setState(prevState => {
-      const arrWithTaskDeleted = prevState.tasks.filter(item => item !== task)
+      const arrWithTaskDeleted = prevState.tasks.filter(task => task.text !== taskText)
       return ({
         tasks: arrWithTaskDeleted
       })
-    })
+    });
   }
 
   render() {
+    console.log(this.state.tasks)
     return (
       <div>
         <TodoTitle />
@@ -37,7 +39,7 @@ class TodoContainer extends React.Component {
         />
         <TasksList
           tasks={this.state.tasks}
-          handleClick={this.handleClick}
+          onDelete={this.onDelete}
         />
       </div>
     );
