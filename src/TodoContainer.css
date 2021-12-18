@@ -1,1 +1,34 @@
+.clear-buttons-container {
+  display: flex;
+  justify-content: center;
+  margin-left: 161px;
+}
 
+.clear-completed-tasks,
+.clear-all-tasks {
+  font-size: 20px;
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid #b8babd;
+  color: #3f9eda;
+  font-weight: 500;
+  height: 42px;
+  width: 140px;
+  outline: 0;
+  transition-duration: 0.4s;  
+}
+
+.clear-completed-tasks {
+  width: 165px;
+}
+
+.clear-completed-tasks:hover,
+.clear-all-tasks:hover {
+  background-color: #3f9eda;
+  color: white;
+}
+
+.hidden {
+  display: none;
+  width: 0px;
+}

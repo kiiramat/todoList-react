@@ -20,16 +20,32 @@ class TodoContainer extends React.Component {
 
   onDelete = (taskText) => {
     this.setState(prevState => {
-      const arrWithTaskDeleted = prevState.tasks.filter(task => task.text !== taskText)
+      const arrWithTaskDeleted = prevState.tasks.filter(task => task.text !== taskText);
       return ({
         tasks: arrWithTaskDeleted
-      })
+      });
     });
+  };
+
+  clearCompletedTasks = () => {
+    this.setState(prevState => {
+      const arrWithoutCompletedTasks = prevState.tasks.filter(task => !task.isDone);
+      return ({
+        tasks: arrWithoutCompletedTasks
+      });
+    });
+  };
+
+  clearAllTasks = () => {
+    this.setState({ tasks: [] });
+  };
+
+  shouldHideButtons = () => {
+    return this.state.tasks.length === 0
   }
 
   render() {
-    console.log(this.state.tasks)
-    return (
+      return (
       <div>
         <TodoTitle />
         <InputBoxWithAddButton
@@ -41,6 +57,10 @@ class TodoContainer extends React.Component {
           tasks={this.state.tasks}
           onDelete={this.onDelete}
         />
+        <div className={`clear-buttons-container ${this.shouldHideButtons() ? 'hidden' : ''}`}>
+          <button className="clear-completed-tasks" onClick={this.clearCompletedTasks}> CLEAR DONE </button>
+          <button className="clear-all-tasks" onClick={this.clearAllTasks}> CLEAR ALL </button>
+        </div>
       </div>
     );
   }
