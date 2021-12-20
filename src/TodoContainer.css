@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   margin-left: 161px;
+  margin-bottom: 50px;
 }
 
 .clear-completed-tasks,
@@ -20,6 +21,10 @@
 
 .clear-completed-tasks {
   width: 165px;
+}
+
+.clear-all-tasks {
+  margin-left: 10px;
 }
 
 .clear-completed-tasks:hover,

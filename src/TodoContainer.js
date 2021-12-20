@@ -10,7 +10,8 @@ class TodoContainer extends React.Component {
   constructor() {
     super();
     this.state = {
-      tasks: []
+      tasks: [],
+      windowHigherThan200Px: false
     };
   }
 
@@ -44,6 +45,25 @@ class TodoContainer extends React.Component {
     return this.state.tasks.length === 0;
   };
 
+  componentDidMount = () => {
+    window.addEventListener("scroll", this.handleScroll);
+    console.log("add event");
+  }
+
+  // componentWillUnmount = () => {
+  //   window.removeEventListener("scroll", this.handleScroll);
+  //   console.log("remove event");
+  // }
+
+  handleScroll = () => {
+    let windowHeight = window.scrollY;
+    if (windowHeight > 200) {
+      this.setState({ windowHigherThan200Px: true });
+    } else {
+      this.setState({ windowHigherThan200Px: false });
+    }
+  }
+
   scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -68,7 +88,7 @@ class TodoContainer extends React.Component {
           <button className="clear-completed-tasks" onClick={this.clearCompletedTasks}> CLEAR DONE </button>
           <button className="clear-all-tasks" onClick={this.clearAllTasks}> CLEAR ALL </button>
         </div>
-        <button className="scroll-to-top-button" onClick={this.scrollToTop}>BACK TO TOP</button>
+        <button className={`scroll-to-top-button ${this.state.windowHigherThan200Px ? "" : "hidden"}`} onClick={this.scrollToTop}>BACK TO TOP</button>
       </div>
     );
   }
