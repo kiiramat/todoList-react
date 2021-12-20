@@ -52,3 +52,10 @@
   word-wrap: break-word;
   max-width: 312px;
 }
+
+.task-text.collapsed {
+  max-height: 46px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

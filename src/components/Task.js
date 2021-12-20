@@ -1,21 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Task.css";
 
 function Task(props) {
   const [fakeState, setFakeState] = useState(0);
-  
+  const [isToggleable, setIsToggleable] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const elementRef = useRef();
+
   const onDeleteClickEvent = () => {
     props.onDelete(props.task.text);
   };
 
   const lineThroughCheckedText = () => {
-    return props.task.isDone ? "line-through" :  ""
+    return props.task.isDone ? "line-through" : "";
   };
 
   const onCheckboxChange = (event) => {
     const { checked } = event.target;
     props.task.isDone = checked;
-    setFakeState(fakeState+1);
+    setFakeState(fakeState + 1);
+  };
+
+  useEffect(() => {
+    const divElement = elementRef.current;
+    setIsToggleable(divElement.offsetWidth < divElement.scrollWidth || divElement.clientHeight > 46);
+  });
+
+  const toggleCollapsed = () => {
+    setIsCollapsed(!isCollapsed);
   };
 
   return (
@@ -28,7 +40,8 @@ function Task(props) {
         checked={props.task.isDone}
         onChange={onCheckboxChange}
       />
-      <span className={`task-text ${lineThroughCheckedText()}`} >{props.task.text}</span>
+      <span className={`task-text ${isCollapsed ? 'collapsed' : ''} ${lineThroughCheckedText()}`} ref={elementRef} >{props.task.text}</span>
+      {isToggleable ? <button onClick={toggleCollapsed}>{isCollapsed ? '⌄' : '⌃'}</button> : ''}
     </li>
   );
 }
