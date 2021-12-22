@@ -50,7 +50,7 @@
 .task-text {
   font-size: 20px;
   word-wrap: break-word;
-  max-width: 312px;
+  max-width: 277px;
 }
 
 .task-text.collapsed {
@@ -58,4 +58,19 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.toggle-button {
+  appearance: none;
+  background: white;
+  color: #3f9eda;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  text-decoration: none;
+  line-height: 26px;
+  padding-top: 10px;
+  padding-left: 22px;
+  font-size: 30px;
 }

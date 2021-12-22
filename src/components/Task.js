@@ -24,7 +24,7 @@ function Task(props) {
   useEffect(() => {
     const divElement = elementRef.current;
     setIsToggleable(divElement.offsetWidth < divElement.scrollWidth || divElement.clientHeight > 46);
-  });
+  }, []);
 
   const toggleCollapsed = () => {
     setIsCollapsed(!isCollapsed);
@@ -41,7 +41,7 @@ function Task(props) {
         onChange={onCheckboxChange}
       />
       <span className={`task-text ${isCollapsed ? 'collapsed' : ''} ${lineThroughCheckedText()}`} ref={elementRef} >{props.task.text}</span>
-      {isToggleable ? <button onClick={toggleCollapsed}>{isCollapsed ? '⌄' : '⌃'}</button> : ''}
+      {isToggleable ? <button className="toggle-button" onClick={toggleCollapsed}>{isCollapsed ? '⌄' : '⌃'}</button> : ''}
     </li>
   );
 }
