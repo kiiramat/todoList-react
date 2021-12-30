@@ -51,7 +51,7 @@ class TodoContainer extends React.Component {
 
   componentWillUnmount = () => {
     window.removeEventListener("scroll", this.handleScroll);
-  }
+  };
 
   handleScroll = () => {
     let windowHeight = window.scrollY;
