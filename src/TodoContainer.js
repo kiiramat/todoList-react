@@ -22,10 +22,12 @@ class TodoContainer extends React.Component {
     };
   }
 
+  updateLocalStorageTasks = () => {
+    localStorage.tasks = JSON.stringify(this.state.tasks);
+  }
+
   onNewTask = (newTask) => {
-    this.setState({ tasks: [...this.state.tasks, new Task(newTask)] }, () => {
-      localStorage.tasks = JSON.stringify(this.state.tasks);
-    });
+    this.setState({ tasks: [...this.state.tasks, new Task(newTask)] }, this.updateLocalStorageTasks);
   };
 
   onDelete = (taskText) => {
@@ -34,9 +36,7 @@ class TodoContainer extends React.Component {
       return ({
         tasks: arrWithTaskDeleted
       });
-    }, () => {
-      localStorage.tasks = JSON.stringify(this.state.tasks);
-    });
+    }, this.updateLocalStorageTasks);
   };
 
   clearCompletedTasks = () => {
@@ -45,15 +45,11 @@ class TodoContainer extends React.Component {
       return ({
         tasks: arrWithoutCompletedTasks
       });
-    }, () => {
-      localStorage.tasks = JSON.stringify(this.state.tasks)
-    });
+    }, this.updateLocalStorageTasks);
   };
 
   clearAllTasks = () => {
-    this.setState({ tasks: [] }, () => {
-      localStorage.tasks = JSON.stringify(this.state.tasks)
-    });
+    this.setState({ tasks: [] }, this.updateLocalStorageTasks);
   };
 
   shouldHideButtons = () => {
@@ -96,6 +92,7 @@ class TodoContainer extends React.Component {
         <TasksList
           tasks={this.state.tasks}
           onDelete={this.onDelete}
+          updateLocalStorageTasks={this.updateLocalStorageTasks}
         />
         <div className={`clear-buttons-container ${this.shouldHideButtons() ? 'hidden' : ''}`}>
           <button className="clear-completed-tasks" onClick={this.clearCompletedTasks}> CLEAR DONE </button>

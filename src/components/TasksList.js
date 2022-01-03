@@ -4,7 +4,7 @@ import Task from "./Task";
 function TasksList(props) {
   const tasksToDo = props.tasks.map((task, index) => {
       return (
-        <Task key={index} task={task} onDelete={props.onDelete} />
+        <Task key={index} task={task} onDelete={props.onDelete} updateLocalStorageTasks={props.updateLocalStorageTasks}/>
     );
   });
 

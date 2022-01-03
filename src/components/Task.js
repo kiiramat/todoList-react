@@ -20,6 +20,7 @@ function Task(props) {
     const { checked } = event.target;
     props.task.isDone = checked;
     setFakeState(fakeState + 1);
+    props.updateLocalStorageTasks();
   };
 
   useEffect(() => {
