@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Anchorme } from "react-anchorme";
 import "./Task.css";
 
 function Task(props) {
@@ -40,7 +41,9 @@ function Task(props) {
         checked={props.task.isDone}
         onChange={onCheckboxChange}
       />
-      <span className={`task-text ${isCollapsed ? 'collapsed' : ''} ${lineThroughCheckedText()}`} ref={elementRef} >{props.task.text}</span>
+      <span className={`task-text ${isCollapsed ? 'collapsed' : ''} ${lineThroughCheckedText()}`} ref={elementRef} >
+        <Anchorme>{props.task.text}</Anchorme>
+      </span>
       {isToggleable ? <button className="toggle-button" onClick={toggleCollapsed}>{isCollapsed ? '⌄' : '⌃'}</button> : ''}
     </li>
   );

@@ -9,14 +9,23 @@ import Task from "./domain/Task";
 class TodoContainer extends React.Component {
   constructor() {
     super();
+    let tasks;
+    try {
+      tasks = JSON.parse(localStorage.tasks).map(obj => Task.fromJson(obj));
+    } catch (e) {
+      console.warn(e);
+      tasks = [];
+    }
     this.state = {
-      tasks: [],
+      tasks: tasks,
       isNewTaskInputInvisible: false
     };
   }
 
   onNewTask = (newTask) => {
-    this.setState({ tasks: [...this.state.tasks, new Task(newTask)] });
+    this.setState({ tasks: [...this.state.tasks, new Task(newTask)] }, () => {
+      localStorage.tasks = JSON.stringify(this.state.tasks);
+    });
   };
 
   onDelete = (taskText) => {
@@ -25,6 +34,8 @@ class TodoContainer extends React.Component {
       return ({
         tasks: arrWithTaskDeleted
       });
+    }, () => {
+      localStorage.tasks = JSON.stringify(this.state.tasks);
     });
   };
 
@@ -34,11 +45,15 @@ class TodoContainer extends React.Component {
       return ({
         tasks: arrWithoutCompletedTasks
       });
+    }, () => {
+      localStorage.tasks = JSON.stringify(this.state.tasks)
     });
   };
 
   clearAllTasks = () => {
-    this.setState({ tasks: [] });
+    this.setState({ tasks: [] }, () => {
+      localStorage.tasks = JSON.stringify(this.state.tasks)
+    });
   };
 
   shouldHideButtons = () => {

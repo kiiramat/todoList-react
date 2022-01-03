@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./InputBoxWithAddButton.css";
-import { Anchorme } from "react-anchorme";
 
 const InputBox = function (props) {
   const [task, setTask] = useState("");
@@ -11,14 +10,14 @@ const InputBox = function (props) {
 
   const onKeyDownEvent = (event) => {
     if (event.key === "Enter" && task !== "") {
-      props.onNewTask(<Anchorme>{task}</Anchorme>);
+      props.onNewTask(task);
       setTask("");
     }
   };
 
   const onClickEvent = () => {
     if (task !== "") {
-      props.onNewTask(<Anchorme>{task}</Anchorme>);
+      props.onNewTask(task);
       setTask("");
     }
   };
